@@ -2,15 +2,16 @@
 
 export const GLOBAL = {
   // Site metadata
-  username: "Zaggonaut",
+  username: "Tomas Gallastegui",
   rootUrl: "https://zaggonaut.dev",
-  shortDescription: "Retro-Inspired Theme &<br /> Built for Astro",
+  shortDescription: "Web Developer",
+  
   longDescription: "Zaggonaut is a retro-inspired theme for Astro, built using TypeScript, TailwindCSS, and Astro.",
   
   // Social media links
-  githubProfile: "https://github.com/RATIU5/zaggonaut",
+  githubProfile: "https://github.com/tomasgallas",
   twitterProfile: "https://twitter.com/",
-  linkedinProfile: "https://www.linkedin.com/",
+  linkedinProfile: "https://www.linkedin.com/in/tomas-gallastegui-90a373342/",
   
   // Common text names used throughout the site
   articlesName: "Articles",

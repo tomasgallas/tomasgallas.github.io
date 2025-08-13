@@ -1,16 +1,15 @@
-/* src/styles/global.css */
-
+/* ================================== */
+/* ESTILOS GLOBALES          */
+/* ================================== */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Onest:wght@500;700&display=swap');
 
 :root {
-  /* Nueva paleta para Dark Mode */
-  --color-background: #0d1117; /* Un negro azulado, como GitHub */
-  --color-text: #c9d1d9; /* Un blanco suave */
-  --color-primary: #58a6ff; /* Un azul brillante que resalta en la oscuridad */
-  --color-secondary: #21262d; /* Gris oscuro para bordes y fondos secundarios */
+  --color-background: #0d1117;
+  --color-text: #c9d1d9;
+  --color-primary: #58a6ff;
+  --color-secondary: #21262d;
   --color-gradient-start: #58a6ff;
-  --color-gradient-end: #9333ea; /* Un morado para los gradientes */
-
+  --color-gradient-end: #9333ea;
   --font-body: 'Inter', sans-serif;
   --font-display: 'Onest', sans-serif;
 }
@@ -22,25 +21,405 @@ html {
   scroll-behavior: smooth;
 }
 
-body {
-  margin: 0;
-}
+body { margin: 0; }
 
 h1, h2, h3, h4 {
   font-family: var(--font-display);
   margin: 0;
-  /* El color del texto principal ahora es más brillante */
   color: #f0f6fc; 
 }
 
-/* --- Keyframes para la animación de entrada --- */
 @keyframes fadeInUp {
-  from {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hidden { display: none; }
+
+/* ================================== */
+/* ESTILOS HEADER           */
+/* ================================== */
+header {
+    padding: 1.5rem 5%;
+    border-bottom: 1px solid var(--color-secondary);
+    background-color: var(--color-background);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+}
+header nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+header .logo {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: #f0f6fc;
+    text-decoration: none;
+}
+header ul {
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    gap: 2rem;
+}
+header li a {
+    font-size: 1rem;
+    color: var(--color-text);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+header li a:hover { color: var(--color-primary); }
+@media (max-width: 600px) {
+    header nav {
+        flex-direction: column;
+        justify-content: center;
+        gap: 1.5rem;
+    }
+}
+
+/* ================================== */
+/* ESTILOS HERO            */
+/* ================================== */
+#hero {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 90vh;
+    padding: 2rem 5%;
+    text-align: center;
+    overflow: hidden;
+}
+#hero::before, #hero::after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    filter: blur(100px);
+    border-radius: 50%;
+}
+#hero::before {
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, var(--color-gradient-start), transparent 60%);
+    animation: move-blob-1 15s infinite alternate ease-in-out;
+}
+#hero::after {
+    width: 350px;
+    height: 350px;
+    background: radial-gradient(circle, var(--color-gradient-end), transparent 60%);
+    animation: move-blob-2 18s infinite alternate ease-in-out;
+    animation-delay: -3s;
+}
+@keyframes move-blob-1 {
+    from { transform: translate(-100px, -50px) rotate(0deg); }
+    to { transform: translate(150px, 100px) rotate(180deg); }
+}
+@keyframes move-blob-2 {
+    from { transform: translate(100px, 100px) rotate(0deg); }
+    to { transform: translate(-150px, -150px) rotate(360deg); }
+}
+#hero .content {
+    position: relative;
+    z-index: 1;
+    max-width: 750px;
+}
+#hero h1 { font-size: clamp(2.5rem, 5vw, 4rem); margin-bottom: 0.5rem; }
+#hero .highlight {
+    background: linear-gradient(90deg, var(--color-gradient-start), var(--color-gradient-end));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+#hero h2 { font-size: clamp(1.5rem, 3vw, 1.75rem); color: var(--color-text); margin-bottom: 1.5rem; }
+#hero p { font-size: clamp(1rem, 2vw, 1.125rem); line-height: 1.8; margin-bottom: 2.5rem; max-width: 600px; margin-inline: auto; }
+#hero .cta-button {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 1rem;
+    color: #fff;
+    background-color: var(--color-primary);
+    padding: 0.8rem 2rem;
+    border-radius: 8px;
+    text-decoration: none;
+    border: 1px solid transparent;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+#hero .cta-button:hover {
+    background-color: transparent;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 15px 0px var(--color-primary);
+}
+#hero .fade-in-up {
     opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+    animation: fadeInUp 0.8s ease forwards;
+    animation-delay: var(--delay);
+}
+
+/* ================================== */
+/* ESTILOS PROJECTS          */
+/* ================================== */
+#proyectos {
+    padding: 4rem 5%;
+    text-align: center;
+}
+#proyectos h2 {
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+}
+#proyectos .project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+#proyectos .fade-in-up {
+    opacity: 0;
+    animation: fadeInUp 0.8s ease forwards;
+    animation-delay: var(--delay, 0s);
+}
+.project-card {
+    background-color: #ffffff0d;
+    border: 1px solid var(--color-secondary);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px #0000004d;
+}
+.project-card img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+}
+.project-card .content {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+.project-card h3 {
+    font-size: 1.5rem;
+    color: #f0f6fc;
+    margin-bottom: 0.5rem;
+}
+.project-card p {
+    font-size: 1rem;
+    color: var(--color-text);
+    line-height: 1.6;
+    flex-grow: 1;
+    margin-bottom: 1.5rem;
+}
+.project-card .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    list-style-type: none;
+    padding: 0;
+    margin: 0 0 1.5rem 0;
+}
+.project-card .tags li {
+    font-size: 0.75rem;
+    background-color: var(--color-primary);
+    color: #fff;
+    padding: 0.25rem 0.75rem;
+    border-radius: 999px;
+    font-weight: 500;
+}
+.project-card .links {
+    display: flex;
+    gap: 1rem;
+}
+.project-card .links a {
+    font-family: var(--font-display);
+    color: #fff;
+    background-color: var(--color-secondary);
+    padding: 0.5rem 1.25rem;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    text-align: center;
+}
+.project-card .links a:hover { background-color: var(--color-primary); }
+
+/* ================================== */
+/* ESTILOS ABOUT            */
+/* ================================== */
+#sobre-mi {
+    padding: 6rem 5%;
+    background-color: var(--dark-bg);
+    text-align: left;
+}
+#sobre-mi .section-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 4rem;
+    align-items: flex-start;
+}
+#sobre-mi h2 { font-size: 2.5rem; margin-bottom: 1.5rem; }
+#sobre-mi h3 {
+    font-size: 1.75rem;
+    border-bottom: 2px solid var(--color-primary);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+#sobre-mi p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--color-text);
+    margin-bottom: 1.5rem;
+}
+#sobre-mi p:last-of-type { margin-bottom: 0; }
+#sobre-mi strong { color: #f0f6fc; }
+#sobre-mi .skills-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    list-style-type: none;
+    padding: 0;
+}
+#sobre-mi .skill-item {
+    font-size: 0.9rem;
+    background-color: #ffffff1a;
+    border: 1px solid var(--color-secondary);
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+#sobre-mi .skill-item:hover {
+    background-color: var(--color-primary);
+    color: var(--dark-bg);
+    font-weight: 700;
+}
+#sobre-mi .fade-in-up {
+    opacity: 0;
+    animation: fadeInUp 0.8s ease forwards;
+    animation-delay: var(--delay, 0s);
+}
+@media (max-width: 900px) {
+    #sobre-mi .section-container {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+    #sobre-mi { text-align: center; }
+    #sobre-mi .text-content { text-align: left; }
+    #sobre-mi h3 {
+        text-align: left;
+        border-left: 2px solid var(--color-primary);
+        border-bottom: none;
+        padding: 0 0 0 1rem;
+    }
+}
+
+/* ================================== */
+/* ESTILOS CONTACTO          */
+/* ================================== */
+#contacto {
+    padding: 6rem 5%;
+    text-align: center;
+}
+#contacto h2 { margin-bottom: 1rem; }
+#contacto p {
+    max-width: 600px;
+    margin: 0 auto 3rem auto;
+}
+#contacto .contact-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+#contacto .contact-card {
+    flex: 1 1 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 2rem;
+    background-color: #ffffff0d;
+    border: 1px solid var(--color-secondary);
+    border-radius: 12px;
+    color: var(--color-text);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+#contacto .contact-card:hover {
+    transform: translateY(-5px);
+    background-color: var(--color-secondary);
+    color: #f0f6fc;
+    border-color: var(--color-primary);
+}
+#contacto .contact-card svg {
+    width: 32px;
+    height: 32px;
+    stroke: var(--color-primary);
+    transition: transform 0.3s ease;
+}
+#contacto .contact-card:hover svg { transform: scale(1.1); }
+#contacto .contact-card span {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+#contacto .fade-in-up {
+    opacity: 0;
+    animation: fadeInUp 0.8s ease forwards;
+    animation-delay: var(--delay, 0s);
+}
+
+/* ================================== */
+/* ESTILOS FOOTER           */
+/* ================================== */
+#footer {
+    padding: 2rem 5%;
+    background-color: var(--color-secondary);
+    border-top: 1px solid #ffffff1a;
+    text-align: center;
+}
+#footer .footer-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+#footer .social-links {
+    display: flex;
+    gap: 1.5rem;
+}
+#footer .social-links a {
+    color: var(--color-text);
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+#footer .social-links a:hover {
+    color: var(--color-primary);
+    transform: scale(1.1);
+}
+#footer .copyright p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--color-text);
+    opacity: 0.8;
+}
+#footer .made-with {
+    margin-top: 0.5rem;
+    font-size: 0.8rem;
 }

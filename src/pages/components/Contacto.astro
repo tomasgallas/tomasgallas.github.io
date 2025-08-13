@@ -1,0 +1,146 @@
+---
+// tus links permanecen igual
+const email = "gallasteguitomase@gmail.com";
+const linkedinUrl = "https://www.linkedin.com/in/tomas-gallastegui-90a373342/";
+const githubUrl = "https://github.com/tomasgallas";
+const cvUrl = "/CV-TomasGallas.pdf";
+---
+<section id="contacto">
+  <div class="section-container">
+    <h2 class="fade-in-up">Hablemos</h2>
+    <p class="fade-in-up" style="--delay: 0.2s;">
+      ¿Tienes una idea, proyecto u oportunidad donde pueda aportar valor? Estoy listo para enfrentar nuevos desafíos y construir soluciones.
+    </p>
+    <div class="contact-links fade-in-up" style="--delay: 0.4s;">
+      
+      <a 
+        id="email-card"
+        href={`mailto:${email}`} 
+        class="contact-card"
+        data-email={email}
+      >
+        <svg id="icon-copy" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+        
+        <svg id="icon-copied" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hidden"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        
+        <span id="email-text">{email}</span>
+      </a>
+
+      <a href={linkedinUrl} target="_blank" rel="noopener noreferrer" class="contact-card">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+        <span>LinkedIn</span>
+      </a>
+
+      <a href={githubUrl} target="_blank" rel="noopener noreferrer" class="contact-card">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+        <span>GitHub</span>
+      </a>
+      
+      <a href={cvUrl} download="CV-TomasGallas.pdf" class="contact-card">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+        <span>Descargar CV</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hidden {
+    display: none;
+  }
+  #contacto {
+    padding: 6rem 5%;
+    text-align: center;
+  }
+  h2 {
+    font-size: 2.5rem;
+    color: #f0f6fc;
+    margin-bottom: 1rem;
+  }
+  p {
+    font-size: 1.1rem;
+    color: var(--color-text);
+    max-width: 600px;
+    margin: 0 auto 3rem auto;
+  }
+  .contact-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .contact-card {
+    flex: 1 1 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 2rem;
+    background-color: #ffffff0d;
+    border: 1px solid var(--color-secondary);
+    border-radius: 12px;
+    color: var(--color-text);
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+  .contact-card:hover {
+    transform: translateY(-5px);
+    background-color: var(--color-secondary);
+    color: #f0f6fc;
+    border-color: var(--color-primary);
+  }
+  .contact-card svg {
+    width: 32px;
+    height: 32px;
+    stroke: var(--color-primary);
+    transition: transform 0.3s ease;
+  }
+  .contact-card:hover svg {
+      transform: scale(1.1);
+  }
+  .contact-card span {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 500;
+  }
+  .fade-in-up {
+    opacity: 0;
+    animation: fadeInUp 0.8s ease forwards;
+    animation-delay: var(--delay, 0s);
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const emailCard = document.getElementById('email-card');
+    if (!emailCard) return;
+    const emailToCopy = emailCard.dataset.email;
+    if (emailToCopy) {
+      const emailText = document.getElementById('email-text');
+      const iconCopy = document.getElementById('icon-copy');
+      const iconCopied = document.getElementById('icon-copied');
+      if (emailText && iconCopy && iconCopied) {
+        emailCard.addEventListener('click', (event) => {
+          event.preventDefault();
+          if (navigator.clipboard) {
+            navigator.clipboard.writeText(emailToCopy).then(() => {
+              emailText.textContent = '¡Copiado!';
+              iconCopy.classList.add('hidden');
+              iconCopied.classList.remove('hidden');
+              setTimeout(() => {
+                emailText.textContent = emailToCopy;
+                iconCopy.classList.remove('hidden');
+                iconCopied.classList.add('hidden');
+              }, 2000);
+            }).catch(err => {
+              console.error('Error al copiar el texto: ', err);
+            });
+          }
+        });
+      }
+    }
+  });
+</script>

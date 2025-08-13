@@ -1,0 +1,68 @@
+---
+import ProjectCard from './ProjectCard.astro';
+
+// AQUÍ PONES LA INFO DE TUS PROYECTOS
+// Simplemente añade o quita objetos de este array.
+const misProyectos = [
+  {
+    title: "Armador de Equipos",
+    description: "Genera equipos de fútbol aleatorios desde una lista de jugadores, con opción de ajustar manualmente intercambiando integrantes y posibilidad de remezclarlos instantáneamente para equilibrar la distribución y mantener partidas justas. ",
+    imgSrc: "/img/proyecto11.png", // Debes crear la carpeta 'public/img' y poner tus imágenes ahí
+    tags: ["HTML5", "CSS3", "JavaScript", "Bootstrap 5"],
+    demoUrl: "https://tomasgallas.github.io/armador-equipos/",
+    repoUrl: "https://github.com/tomasgallas/armador-equipos"
+  },
+  {
+    title: "Biblioteca",
+    description: "Plataforma web que centraliza libros y autores. Con login para admin, bibliotecario y alumno, permite gestionar usuarios, controlar inventario y mostrar menús y permisos según el rol, todo desde una interfaz única.",
+    imgSrc: "/img/biblioteca.png",
+    tags: ["Node.js", "React", ".NET Core", "SQLite"],
+    repoUrl: "https://github.com/tomasgallas/bibliotecaBackEnd" // Nota: este no tiene demoUrl
+  },
+  {
+    title: "Seguimos aprendiendo! 🤓",
+    description: "...",
+    imgSrc: "/img/meme.png",
+    tags: [],
+  }
+];
+---
+
+<section id="proyectos">
+  <h2 class="fade-in-up">Proyectos Destacados</h2>
+  <div class="project-grid">
+    {misProyectos.map((proyecto, index) => (
+      <div class="fade-in-up" style={`--delay: ${0.2 * (index + 1)}s;`}>
+        <ProjectCard {...proyecto} />
+      </div>
+    ))}
+  </div>
+</section>
+
+<style>
+  #proyectos {
+    padding: 4rem 5%;
+    text-align: center;
+  }
+
+  h2 {
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .project-grid {
+    display: grid;
+    /* Grid responsive: se ajusta automáticamente */
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  /* Animación de entrada */
+  .fade-in-up {
+    opacity: 0;
+    animation: fadeInUp 0.8s ease forwards;
+    animation-delay: var(--delay, 0s);
+  }
+</style>

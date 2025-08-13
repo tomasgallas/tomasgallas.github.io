@@ -1,0 +1,46 @@
+/* src/styles/global.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Onest:wght@500;700&display=swap');
+
+:root {
+  /* Nueva paleta para Dark Mode */
+  --color-background: #0d1117; /* Un negro azulado, como GitHub */
+  --color-text: #c9d1d9; /* Un blanco suave */
+  --color-primary: #58a6ff; /* Un azul brillante que resalta en la oscuridad */
+  --color-secondary: #21262d; /* Gris oscuro para bordes y fondos secundarios */
+  --color-gradient-start: #58a6ff;
+  --color-gradient-end: #9333ea; /* Un morado para los gradientes */
+
+  --font-body: 'Inter', sans-serif;
+  --font-display: 'Onest', sans-serif;
+}
+
+html {
+  font-family: var(--font-body);
+  color: var(--color-text);
+  background-color: var(--color-background);
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  margin: 0;
+  /* El color del texto principal ahora es más brillante */
+  color: #f0f6fc; 
+}
+
+/* --- Keyframes para la animación de entrada --- */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

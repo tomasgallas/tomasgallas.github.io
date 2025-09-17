@@ -20,10 +20,12 @@ const misProyectos = [
     repoUrl: "https://github.com/tomasgallas/bibliotecaBackEnd" // Nota: este no tiene demoUrl
   },
   {
-    title: "Seguimos aprendiendo! 🤓",
-    description: "...",
-    imgSrc: "/img/meme.png",
-    tags: [],
+    title: "Landing Page para Negocio",
+    description: "El proyecto consiste en el desarrollo de una landing page y catálogo digital para NTN Tintas y Toners , un negocio de venta de insumos informáticos y servicios de recarga y reparación.",
+    imgSrc: "/img/ntn.png",
+    tags: ["Astro","GitHub Pages","HTML5","CSS3","JavaScript"],
+    demoUrl:"https://tintasytonersntn-coder.github.io/",
+    repoUrl:"https://github.com/tintasytonersntn-coder/tintasytonersntn-coder.github.io"
   }
 ];
 ---
@@ -39,30 +41,3 @@ const misProyectos = [
   </div>
 </section>
 
-<style>
-  #proyectos {
-    padding: 4rem 5%;
-    text-align: center;
-  }
-
-  h2 {
-    font-size: 2.5rem;
-    margin-bottom: 3rem;
-  }
-
-  .project-grid {
-    display: grid;
-    /* Grid responsive: se ajusta automáticamente */
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  
-  /* Animación de entrada */
-  .fade-in-up {
-    opacity: 0;
-    animation: fadeInUp 0.8s ease forwards;
-    animation-delay: var(--delay, 0s);
-  }
-</style>

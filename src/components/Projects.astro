@@ -1,40 +1,36 @@
 ---
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
 import ProjectCard from './ProjectCard.astro';
 
-// AQUÍ PONES LA INFO DE TUS PROYECTOS
-// Simplemente añade o quita objetos de este array.
+// TUS DATOS DE PROYECTOS (Esto queda igual)
 const misProyectos = [
   {
     title: "Armador de Equipos",
     description: "Genera equipos de fútbol aleatorios desde una lista de jugadores, con opción de ajustar manualmente intercambiando integrantes y posibilidad de remezclarlos instantáneamente para equilibrar la distribución y mantener partidas justas. ",
-    imgSrc: "/img/proyecto11.png", // Debes crear la carpeta 'public/img' y poner tus imágenes ahí
+    imgSrc: "/img/proyecto11.png",
     tags: ["JavaScript", "HTML5", "CSS3", "Bootstrap 5"],
     demoUrl: "https://tomasgallas.github.io/armador-equipos/",
     repoUrl: "https://github.com/tomasgallas/armador-equipos"
   },
   {
-      title: "LabsLIA",
-      description: "Sistema de gestión de laboratorios informáticos para instituciones educativas, desarrollado con Jakarta EE. Permite la administración de recursos, programación de reservas, control de inventario y gestión de usuarios según roles.",
-      imgSrc: "/img/labslia.png",
-      tags: ["Java","MySQL","GlassFish","Jakarta EE"],
-      repoUrl:"https://github.com/tomasgallas/LabsLIA-java"
-    },
-    {
-      title: "Gestion Universitaria",
-      description: "Sistema que permite la gestión de diversas entidades académicas como Materias, Facultades, Carreras, Alumnos, Exámenes y Docentes. Incluye funcionalidades CRUD para cada entidad y reportes específicos generados mediante consultas JPQL.",
-      imgSrc: "/img/alumnos.png",
-      tags: ["Java","MySQL","GlassFish","Jakarta EE"],
-      repoUrl:"https://github.com/tomasgallas/AppAlumnosBackEndIII"
-    },
+    title: "LabsLIA",
+    description: "Sistema de gestión de laboratorios informáticos para instituciones educativas, desarrollado con Jakarta EE. Permite la administración de recursos, programación de reservas, control de inventario y gestión de usuarios según roles.",
+    imgSrc: "/img/labslia.png",
+    tags: ["Java","MySQL","GlassFish","Jakarta EE"],
+    repoUrl:"https://github.com/tomasgallas/LabsLIA-java"
+  },
+  {
+    title: "Gestion Universitaria",
+    description: "Sistema que permite la gestión de diversas entidades académicas como Materias, Facultades, Carreras, Alumnos, Exámenes y Docentes. Incluye funcionalidades CRUD para cada entidad y reportes específicos generados mediante consultas JPQL.",
+    imgSrc: "/img/alumnos.png",
+    tags: ["Java","MySQL","GlassFish","Jakarta EE"],
+    repoUrl:"https://github.com/tomasgallas/AppAlumnosBackEndIII"
+  },
   {
     title: "Biblioteca",
     description: "Plataforma web que centraliza libros y autores. Con login para admin, bibliotecario y alumno, permite gestionar usuarios, controlar inventario y mostrar menús y permisos según el rol, todo desde una interfaz única.",
     imgSrc: "/img/biblioteca.png",
     tags: ["Node.js", "React", ".NET Core", "SQLite"],
-    repoUrl: "https://github.com/tomasgallas/bibliotecaBackEnd" // Nota: este no tiene demoUrl
+    repoUrl: "https://github.com/tomasgallas/bibliotecaBackEnd"
   },
   {
     title: "Landing Page para Negocio",
@@ -47,8 +43,11 @@ const misProyectos = [
 ];
 ---
 
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
 <section id="proyectos">
   <h2 class="fade-in-up">Proyectos Destacados</h2>
+  
   <div class="swiper mySwiper">
     <div class="swiper-wrapper">
       {misProyectos.map((proyecto, index) => (
@@ -57,37 +56,59 @@ const misProyectos = [
         </div>
       ))}
     </div>
+    
     <div class="swiper-button-next"></div>
     <div class="swiper-button-prev"></div>
     <div class="swiper-pagination"></div>
   </div>
 </section>
 
-<script>
-  import Swiper from 'swiper';
-  import { Navigation, Pagination } from 'swiper/modules';
+<script is:inline src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
-  new Swiper('.mySwiper', {
-    modules: [Navigation, Pagination],
-    loop: true,
-    slidesPerView: 1,
-    spaceBetween: 30,
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
-    pagination: {
-      el: '.swiper-pagination',
-      clickable: true,
-    },
-    breakpoints: {
+<script is:inline>
+  // Definimos la función de inicio
+  const iniciarSwiper = () => {
+    new Swiper('.mySwiper', {
+      // Nota: Ya no necesitamos importar "modules" aquí porque el bundle trae todo
+      loop: true,
+      slidesPerView: 1,
+      spaceBetween: 30,
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      breakpoints: {
         768: {
-            slidesPerView: 2,
+          slidesPerView: 2,
         },
         1024: {
-            slidesPerView: 3,
+          slidesPerView: 3,
         },
-    },
-  });
+      },
+    });
+  };
+
+  // Ejecutamos inmediatamente
+  iniciarSwiper();
+
+  // Aseguramos compatibilidad si navegas entre páginas en Astro
+  document.addEventListener('astro:page-load', iniciarSwiper);
 </script>
 
+<style>
+  /* Estilos de seguridad para que el contenedor no tenga ancho cero */
+  .swiper {
+    width: 100%;
+    padding-bottom: 50px;
+  }
+  
+  .swiper-slide {
+    height: auto;
+    display: flex;
+    justify-content: center;
+  }
+</style>
